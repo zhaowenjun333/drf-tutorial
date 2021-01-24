@@ -9,11 +9,11 @@ from rest_framework import serializers
 
 from .models import Course
 
-
-class CourseForm(forms.ModelForm):
-    class Meta:
-        model = Course
-        fields = ('name', 'introduction', 'teacher', 'price')
+#
+# class CourseForm(forms.ModelForm):
+#     class Meta:
+#         model = Course
+#         fields = ('name', 'introduction', 'teacher', 'price')
 
 
 class UserSerializer(serializers.ModelSerializer):

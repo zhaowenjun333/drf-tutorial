@@ -5,6 +5,7 @@
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.http import HttpResponse
 from rest_framework import generics, viewsets
 from rest_framework import status
 from rest_framework.authentication import BasicAuthentication, SessionAuthentication, TokenAuthentication
@@ -36,9 +37,13 @@ def generate_token(sender, instance=None, created=False, **kwargs):
 """一、 函数式编程 Function Based View"""
 
 
+@api_view(["GET"])
+def hello(request):
+    return HttpResponse("Hello world ! ")
+
 @api_view(["GET", "POST"])
-@authentication_classes((BasicAuthentication, SessionAuthentication, TokenAuthentication))
-@permission_classes((IsAuthenticated,))
+# @authentication_classes((BasicAuthentication, SessionAuthentication, TokenAuthentication))
+# @permission_classes((IsAuthenticated,))
 def course_list(request):
     """
     获取所有课程信息或新增一个课程
